@@ -1,0 +1,219 @@
+body {
+    background: #5a5959;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+canvas {
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    width: 100%;
+}
+.center-text {
+    text-align: center;
+    color: #e2e0e0;
+}
+.stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(0,0,0,0.15);
+    padding: 16px 32px;
+    border-radius: 12px;
+    margin: 24px 0 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.stats-bar span, .stats-bar #powerupStatus {
+    color: #fff;
+    font-size: 1.2em;
+}
+#ballsEatenGraph {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #222;
+}
+.customizer-bar {
+    display: flex;
+    gap: 24px;
+    margin: 10px 0 20px 0;
+    justify-content: center;
+}
+.customizer-bar label {
+    color: #e2e0e0;
+    font-size: 1em;
+}
+.main-canvas-container {
+    position: relative; /* Add this! */
+    background: rgba(0,0,0,0.10);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+}
+.game-btn {
+    font-size: 1.5em;
+    padding: 0.5em 2em;
+    margin: 0.5em;
+    border-radius: 0.5em;
+    background: #0077b3;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    border: 2px solid #0077b3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: center;
+}
+.game-btn:hover {
+    background: #fff;
+    color: #0077b3;
+    border: 2px solid #0077b3;
+}
+.joystick-zone {
+    width: 120px;
+    height: 120px;
+    margin: 24px auto 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+#timerDisplay {
+    color: #fff;
+    font-size: 1.2em;
+    margin-left: 16px;
+}
+#timerDisplay.low {
+    color: #ff5555;
+    font-weight: bold;
+}
+.game-over-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30,30,30,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.game-over-content {
+    text-align: center;
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    padding: 2em 3em;
+    border-radius: 1em;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+.game-over-content .game-btn + .game-btn {
+    margin-top: 1em;
+}
+.start-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30,30,30,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.start-content {
+    text-align: center;
+}
+/* Make leaderboard text white and fix it at the top center */
+.leaderboard {
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    padding: 1em 2em;
+    border-radius: 1em;
+    max-width: 350px;
+    text-align: center;
+    margin: 24px auto 0 auto; /* space above, center horizontally */
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    position: static; /* Remove fixed positioning */
+}
+.leaderboard h3,
+.leaderboard ol,
+.leaderboard li {
+    color: #fff;
+}
+/* Joystick Canvas Styles */
+#joystick {
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+    -moz-border-radius: 150px;
+    -webkit-border-radius: 150px;
+    text-align: center;
+    background-color: #80d5ff;
+    font: 16px/150px Helvetica, Arial, sans-serif;
+    cursor: all-scroll;
+    user-select: none;
+    z-index: -100;
+}
+
+#simple-joystick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0;
+}
+
+#joystick-base {
+  width: 100px;
+  height: 100px;
+  background: #80d5ff;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  touch-action: none;
+}
+
+#joystick-knob {
+  width: 40px;
+  height: 40px;
+  background: #0077b3;
+  border-radius: 50%;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  transition: background 0.2s;
+  touch-action: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Prevent text selection on the whole page if desired */
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+@media (max-width: 900px) {
+    .main-canvas-container { padding: 4px; }
+    #ballPlayground { width: 98vw !important; max-width: 98vw; }
+    .stats-bar { flex-direction: column; gap: 8px; }
+}

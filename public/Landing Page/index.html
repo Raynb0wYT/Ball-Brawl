@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Brawl</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Images/bluechasered.png" type="image/png">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <h1>Welcome to Ball Brawl!</h1>
+        <h2>What gamemode would you like to play?</h2>
+        <div>
+            <div class="dropdown" id="gamemodeDropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown()">Gamemodes</button>
+                <div class="dropdown-content">
+                    <a href="Player Controlled/playerballs.html">Player Controlled</a>
+                    <a href="Idle Balls/idleballs.html">AI Mode</a>
+                    <a href="Survival/survivalmode.html">Survival Mode</a>
+                    <!-- Add more modes here -->
+                </div>
+            </div>
+            <a href="rules.html" class="game-btn">Game Rules</a>
+        </div>
+    </div>
+    <script>
+        function toggleDropdown() {
+            document.getElementById('gamemodeDropdown').classList.toggle('open');
+        }
+        // Optional: Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('gamemodeDropdown');
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

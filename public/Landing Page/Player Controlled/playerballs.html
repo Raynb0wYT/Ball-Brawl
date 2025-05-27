@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ball Brawl Control</title>
+    <link rel="icon" type="image/png" href="../Images/bluechasered.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="center-container">
+        <h1 class="center-text">Ball Brawl - Player Controlled</h1>
+        <h2 class="center-text" style="font-size:1.3em; font-weight:400;">Control the ball yourself and see how many you can eat!</h2>
+        <div class="stats-bar" style="margin-bottom: 1em;">
+            <span id="ballsEaten">Balls Eaten: 0</span>
+            <span id="bepsCounter">BEPS: <span id="currentBEPS">0</span> | Peak BEPS: <span id="peakBEPS">0</span></span>
+            <span id="powerupStatus">Power-up: <span id="activePowerup">None</span></span>
+        </div>
+        <canvas id="ballsEatenGraph" width="300" height="60" style="margin-bottom:1em;"></canvas>
+        <div class="customizer-bar" style="margin-bottom: 1em;">
+            <div id="colorCustomizer" style="display:none;">
+                <label for="ballColorPicker" class="center-text">Choose Ball Color: </label>
+                <input type="color" id="ballColorPicker" value="#0077b3">
+            </div>
+            <div id="redColorCustomizer" style="display:none;">
+                <label for="redBallColorPicker" class="center-text">Choose Red Ball Color: </label>
+                <input type="color" id="redBallColorPicker" value="#ff0000">
+            </div>
+        </div>
+        <div class="main-canvas-container" style="margin-bottom: 1em;">
+            <canvas id="ballPlayground" width="800" height="600"></canvas>
+        </div>
+        <div id="joystick-zone" class="joystick-zone"></div>
+        <a href="../index.html" class="game-btn">Return to Main Menu</a>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.9.0/dist/nipplejs.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ball Brawl Survival</title>
+    <link rel="icon" type="image/png" href="../Images/bluechasered.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="center-container">
+        <div id="leaderboard" class="leaderboard">
+            <h3>Leaderboard</h3>
+            <ol id="leaderboardList"></ol>
+        </div>
+        <h1 class="center-text">Ball Brawl - Survival Mode</h1>
+        <h2 class="center-text" style="font-size:1.3em; font-weight:400;">Control the ball yourself and see how many you can eat!</h2>
+        <div class="stats-bar" style="margin-bottom: 1em;">
+            <span id="ballsEaten">Balls Eaten: 0</span>
+            <span id="bepsCounter">BEPS: <span id="currentBEPS">0</span> | Peak BEPS: <span id="peakBEPS">0</span></span>
+            <span id="powerupStatus">Power-up: <span id="activePowerup">None</span></span>
+            <span id="timerDisplay">Time Left: 5.0s</span>
+        </div>
+        <canvas id="ballsEatenGraph" width="300" height="60" style="margin-bottom:1em;"></canvas>
+        <div class="customizer-bar" style="margin-bottom: 1em;">
+            <div id="colorCustomizer" style="display:none;">
+                <label for="ballColorPicker" class="center-text">Choose Ball Color: </label>
+                <input type="color" id="ballColorPicker" value="#0077b3">
+            </div>
+            <div id="redColorCustomizer" style="display:none;">
+                <label for="redBallColorPicker" class="center-text">Choose Red Ball Color: </label>
+                <input type="color" id="redBallColorPicker" value="#ff0000">
+            </div>
+        </div>
+        <div class="main-canvas-container" style="margin-bottom: 1em; position:relative;">
+            <canvas id="ballPlayground" width="800" height="600"></canvas>
+            <div id="startOverlay" class="start-overlay">
+                <div class="start-content">
+                    <button id="startBtn" class="game-btn">Start Survival</button>
+                </div>
+            </div>
+            <div id="gameOverOverlay" class="game-over-overlay" style="display:none;">
+                <div class="game-over-content">
+                    <h1 id="gameOverText">Game Over!</h1>
+                    <h2 id="survivedTime"></h2>
+                    <button id="tryAgainBtn" class="game-btn">Try again?</button>
+                    <button id="mainMenuBtn" class="game-btn">Return to Main Menu</button>
+                </div>
+            </div>
+        </div>
+        <div id="simple-joystick">
+          <div id="joystick-base">
+            <div id="joystick-knob"></div>
+          </div>
+        </div>
+        <a href="../index.html" class="game-btn">Return to Main Menu</a>
+        <button id="clearLocalStorageBtn" class="game-btn" style="margin: 1em auto; display: block;">
+            Clear Local Storage
+        </button>
+    </div>
+</body>
+<!-- Load backend logic as a module FIRST -->
+<script type="module" src="leaderboard-backend.js"></script>
+<!-- Then load your main game script as a regular script -->
+<script src="script.js"></script>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+<script src="joystick.js"></script>
+</html>
